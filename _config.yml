@@ -1,0 +1,21 @@
+# Setup
+title:        MyWiki知识管理
+tagline:      MyWiki 是 wodeata.com 开发者的知识、文档及笔记博客管理站点。
+baseurl:      ""
+paginate:     1
+locale:       "en"
+
+# About/contact
+author:
+  name:       luowei
+  url:        http://wodedata.com
+
+# Gems
+# plugins:
+gems:
+  - jekyll-paginate
+
+#Others
+markdown: kramdown
+
+theme: jekyll-theme-cayman
