@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>落星部落 – Migration v1</title><link>https://lothing.github.io/internal-docs/migration-v1/</link><description>Recent content in Migration v1 on 落星部落</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><atom:link href="https://lothing.github.io/internal-docs/migration-v1/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>https://lothing.github.io/internal-docs/migration-v1/implementation-playbook/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://lothing.github.io/internal-docs/migration-v1/implementation-playbook/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lothing部落 – Migration v1</title><link>https://lothing.github.io/internal-docs/migration-v1/</link><description>Recent content in Migration v1 on Lothing部落</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><atom:link href="https://lothing.github.io/internal-docs/migration-v1/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>https://lothing.github.io/internal-docs/migration-v1/implementation-playbook/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://lothing.github.io/internal-docs/migration-v1/implementation-playbook/</guid><description>
 &lt;h1&gt;源码私有化与公开发布实施手册&lt;/h1&gt;&lt;h2&gt;1. 适用场景&lt;span class="hx:absolute hx:-mt-20" id="1-适用场景"&gt;&lt;/span&gt;
 &lt;a href="#1-%e9%80%82%e7%94%a8%e5%9c%ba%e6%99%af" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;适用于以下项目：&lt;/p&gt;
 &lt;ul&gt;
@@ -116,7 +116,7 @@ data-copied-label="已复制！"
 &lt;li&gt;&lt;code&gt;363ae96&lt;/code&gt; &lt;code&gt;update comment&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;code&gt;src_repo/&lt;/code&gt; 目录仅在迁移过程中作为本地嵌套仓库存在，不再参与当前站点构建，也不再保留在工作区。&lt;/p&gt;</description></item><item><title/><link>https://lothing.github.io/internal-docs/migration-v1/project-refactor-and-access-control/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://lothing.github.io/internal-docs/migration-v1/project-refactor-and-access-control/</guid><description>
-&lt;h1&gt;落星部落项目改造与权限分离记录&lt;/h1&gt;&lt;h2&gt;1. 目标&lt;span class="hx:absolute hx:-mt-20" id="1-目标"&gt;&lt;/span&gt;
+&lt;h1&gt;Lothing部落项目改造与权限分离记录&lt;/h1&gt;&lt;h2&gt;1. 目标&lt;span class="hx:absolute hx:-mt-20" id="1-目标"&gt;&lt;/span&gt;
 &lt;a href="#1-%e7%9b%ae%e6%a0%87" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;本次改造的核心目标有三项：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;将原先“源码和生成后的静态站点混在同一公开仓库”的状态拆开。&lt;/li&gt;
@@ -341,7 +341,7 @@ href="https://lothing.github.io/Users/mark/repos/lothing.github.io/assets/js/gis
 href="https://lothing.github.io/Users/mark/repos/lothing.github.io/_config.yml"&gt;_config.yml&lt;/a&gt;。&lt;/li&gt;
 &lt;li&gt;若后续有新的迁移、部署或安全改造，应优先追加到本目录。&lt;/li&gt;
 &lt;/ul&gt;</description></item><item><title/><link>https://lothing.github.io/internal-docs/migration-v1/%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://lothing.github.io/internal-docs/migration-v1/%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/</guid><description>
-&lt;h1&gt;落星部落 Jekyll Blog 优化方案&lt;/h1&gt;&lt;blockquote&gt;
+&lt;h1&gt;Lothing部落 Jekyll Blog 优化方案&lt;/h1&gt;&lt;blockquote&gt;
 &lt;p&gt;分析日期：2026-03-22
 项目地址：https://lothing.github.io
 当前规模：~27MB，699 个 HTML 页面，3 位作者内容&lt;/p&gt;
@@ -471,7 +471,7 @@ data-copied-label="已复制！"
 &lt;a href="#7-%e6%b7%bb%e5%8a%a0-_configyml-%e6%81%a2%e5%a4%8d-jekyll-%e6%9e%84%e5%bb%ba%e8%83%bd%e5%8a%9b" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;问题：&lt;/strong&gt; 当前无法通过 &lt;code&gt;jekyll build&lt;/code&gt; 重新生成站点，所有内容修改需要手动编辑 HTML。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;若想恢复 Jekyll 构建能力，建议最小化 &lt;code&gt;_config.yml&lt;/code&gt;：&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
-&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;落星部落&lt;/span&gt;&lt;span class="w"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;Lothing部落&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;url&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;https://lothing.github.io&amp;#34;&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;baseurl&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class="w"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;description&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;秦晖、刘军宁、翟学伟文章集&amp;#34;&lt;/span&gt;&lt;span class="w"&gt;
