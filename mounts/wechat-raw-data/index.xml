@@ -1,1 +1,1139 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lothing部落 – Private: WeChat Raw Data</title><link>https://lothing.github.io/mounts/wechat-raw-data/</link><description>Recent content in Private: WeChat Raw Data on Lothing部落</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><atom:link href="https://lothing.github.io/mounts/wechat-raw-data/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lothing部落 – Private: WeChat Raw Data</title><link>https://lothing.github.io/mounts/wechat-raw-data/</link><description>Recent content in Private: WeChat Raw Data on Lothing部落</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><atom:link href="https://lothing.github.io/mounts/wechat-raw-data/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>https://lothing.github.io/mounts/wechat-raw-data/analysis/readme/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://lothing.github.io/mounts/wechat-raw-data/analysis/readme/</guid><description>
+&lt;h1&gt;WeChat Data Analysis Results&lt;/h1&gt;&lt;p&gt;Analysis results from the 2026-06-03 comprehensive wechat knowledge infrastructure review.&lt;/p&gt;
+&lt;h2&gt;Files&lt;span class="hx:absolute hx:-mt-20" id="files"&gt;&lt;/span&gt;
+&lt;a href="#files" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;File&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Size&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;2026-06-03-full-analysis.json&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Full multi-dimension analysis (interactions, social graph, personality, relationships, topics)&lt;/td&gt;
+&lt;td&gt;98 KB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;2026-06-03-social-graph.html&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Interactive D3.js force-directed social graph (200 nodes, 500 edges, 5 communities)&lt;/td&gt;
+&lt;td&gt;66 KB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;2026-06-03-media-index.json&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Media attachment index (voice entries from VoiceInfo table)&lt;/td&gt;
+&lt;td&gt;398 KB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;2026-06-03-top100-contacts.csv&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Top 100 contacts with message stats (aliases pending manual review)&lt;/td&gt;
+&lt;td&gt;12 KB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;2026-06-03-top50-contacts.csv&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Top 50 contacts with message stats&lt;/td&gt;
+&lt;td&gt;6 KB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;exports/general-db/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;general.db full export with base64-encoded binary fields (23 tables)&lt;/td&gt;
+&lt;td&gt;3.4 MB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Generation Commands&lt;span class="hx:absolute hx:-mt-20" id="generation-commands"&gt;&lt;/span&gt;
+&lt;a href="#generation-commands" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Full analysis&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;python3 ~/.agents/tools/wechat-archive/wechat-analyze.py --all --top-n &lt;span class="m"&gt;20&lt;/span&gt; -o analysis/2026-06-03-full-analysis.json
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Social graph (HTML)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Generated from analysis JSON using D3.js&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Media index&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;python3 ~/.agents/tools/wechat-archive/wechat-media-index.py -o analysis/2026-06-03-media-index.json
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Contact alias mapping&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;python3 ~/.agents/tools/wechat-archive/wechat-contact-alias.py --top-n &lt;span class="m"&gt;100&lt;/span&gt; -o analysis/2026-06-03-top100-contacts.csv
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# General.db export with base64 blobs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;python3 wechat-export-macos/export_auxiliary_data.py --base64-blobs
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Social graph D3.js HTML&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Generated programmatically from full-analysis.json network data&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Privacy&lt;span class="hx:absolute hx:-mt-20" id="privacy"&gt;&lt;/span&gt;
+&lt;a href="#privacy" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;All contact/speaker identifiers are salted SHA-256 hashes. No real names, phone numbers, or WeChat IDs are stored in these files.&lt;/p&gt;</description></item><item><title/><link>https://lothing.github.io/mounts/wechat-raw-data/docs/analysis-summary/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://lothing.github.io/mounts/wechat-raw-data/docs/analysis-summary/</guid><description>
+&lt;h1&gt;微信归档分析摘要&lt;/h1&gt;&lt;p&gt;快照日期：2026-06-01&lt;/p&gt;
+&lt;p&gt;本文件只记录统计、覆盖范围和结构信息，不记录原始消息正文。&lt;/p&gt;
+&lt;h2&gt;总体统计&lt;span class="hx:absolute hx:-mt-20" id="总体统计"&gt;&lt;/span&gt;
+&lt;a href="#%e6%80%bb%e4%bd%93%e7%bb%9f%e8%ae%a1" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;导出消息行数：1,280,859&lt;/li&gt;
+&lt;li&gt;会话数：1,541&lt;/li&gt;
+&lt;li&gt;speaker 数：10,228&lt;/li&gt;
+&lt;li&gt;首条时间：&lt;code&gt;2019-07-08T08:50:17+00:00&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;末条时间：&lt;code&gt;2026-06-01T14:52:56+00:00&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;按源 DB 统计&lt;span class="hx:absolute hx:-mt-20" id="按源-db-统计"&gt;&lt;/span&gt;
+&lt;a href="#%e6%8c%89%e6%ba%90-db-%e7%bb%9f%e8%ae%a1" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;DB&lt;/th&gt;
+&lt;th style="text-align: right"&gt;行数&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;message_0.db&lt;/code&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;160,770&lt;/td&gt;
+&lt;td&gt;普通消息分片&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;message_1.db&lt;/code&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;202,303&lt;/td&gt;
+&lt;td&gt;普通消息分片&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;message_2.db&lt;/code&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;173,905&lt;/td&gt;
+&lt;td&gt;普通消息分片&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;message_3.db&lt;/code&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;266,563&lt;/td&gt;
+&lt;td&gt;普通消息分片&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;message_4.db&lt;/code&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;216,985&lt;/td&gt;
+&lt;td&gt;普通消息分片&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;message_5.db&lt;/code&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;76,602&lt;/td&gt;
+&lt;td&gt;普通消息分片&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;message_6.db&lt;/code&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;43,114&lt;/td&gt;
+&lt;td&gt;普通消息分片&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;message_7.db&lt;/code&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;594&lt;/td&gt;
+&lt;td&gt;早期迁移小分片&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;biz_message_0.db&lt;/code&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;24,401&lt;/td&gt;
+&lt;td&gt;公众号/服务号/业务消息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;biz_message_1.db&lt;/code&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;42,768&lt;/td&gt;
+&lt;td&gt;公众号/服务号/业务消息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;biz_message_2.db&lt;/code&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;26,932&lt;/td&gt;
+&lt;td&gt;公众号/服务号/业务消息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;biz_message_3.db&lt;/code&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;22,258&lt;/td&gt;
+&lt;td&gt;公众号/服务号/业务消息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;biz_message_4.db&lt;/code&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;23,664&lt;/td&gt;
+&lt;td&gt;公众号/服务号/业务消息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;按年份统计&lt;span class="hx:absolute hx:-mt-20" id="按年份统计"&gt;&lt;/span&gt;
+&lt;a href="#%e6%8c%89%e5%b9%b4%e4%bb%bd%e7%bb%9f%e8%ae%a1" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;年份&lt;/th&gt;
+&lt;th style="text-align: right"&gt;行数&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;2019&lt;/td&gt;
+&lt;td style="text-align: right"&gt;22,263&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2020&lt;/td&gt;
+&lt;td style="text-align: right"&gt;54,698&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2021&lt;/td&gt;
+&lt;td style="text-align: right"&gt;107,060&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2022&lt;/td&gt;
+&lt;td style="text-align: right"&gt;329,920&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2023&lt;/td&gt;
+&lt;td style="text-align: right"&gt;261,548&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2024&lt;/td&gt;
+&lt;td style="text-align: right"&gt;221,325&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2025&lt;/td&gt;
+&lt;td style="text-align: right"&gt;175,902&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2026&lt;/td&gt;
+&lt;td style="text-align: right"&gt;108,143&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;高频消息类型&lt;span class="hx:absolute hx:-mt-20" id="高频消息类型"&gt;&lt;/span&gt;
+&lt;a href="#%e9%ab%98%e9%a2%91%e6%b6%88%e6%81%af%e7%b1%bb%e5%9e%8b" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;类型&lt;/th&gt;
+&lt;th style="text-align: right"&gt;行数&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;文本&lt;/td&gt;
+&lt;td style="text-align: right"&gt;827,957&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;图片&lt;/td&gt;
+&lt;td style="text-align: right"&gt;117,271&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;系统提示&lt;/td&gt;
+&lt;td style="text-align: right"&gt;27,196&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;表情&lt;/td&gt;
+&lt;td style="text-align: right"&gt;26,513&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;视频&lt;/td&gt;
+&lt;td style="text-align: right"&gt;12,388&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;语音&lt;/td&gt;
+&lt;td style="text-align: right"&gt;3,149&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;语音/视频通话&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,083&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;位置&lt;/td&gt;
+&lt;td style="text-align: right"&gt;697&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;导出中仍存在若干 &lt;code&gt;未知(...)&lt;/code&gt; 类型，因为当前 exporter 对部分 WeChat 原始类型值还没有做语义映射。&lt;/p&gt;
+&lt;h2&gt;辅助库统计&lt;span class="hx:absolute hx:-mt-20" id="辅助库统计"&gt;&lt;/span&gt;
+&lt;a href="#%e8%be%85%e5%8a%a9%e5%ba%93%e7%bb%9f%e8%ae%a1" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;联系人：21,830&lt;/li&gt;
+&lt;li&gt;联系人标签：32&lt;/li&gt;
+&lt;li&gt;群成员记录：17,474&lt;/li&gt;
+&lt;li&gt;收藏：483&lt;/li&gt;
+&lt;li&gt;SNS timeline：2,944&lt;/li&gt;
+&lt;li&gt;SNS notification：0&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MessageResourceInfo&lt;/code&gt;：140,851&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MessageResourceDetail&lt;/code&gt;：305,917&lt;/li&gt;
+&lt;li&gt;语音索引 &lt;code&gt;VoiceInfo&lt;/code&gt;：3,016&lt;/li&gt;
+&lt;li&gt;图片 hardlink 索引：83,356&lt;/li&gt;
+&lt;li&gt;视频 hardlink 索引：1,380&lt;/li&gt;
+&lt;li&gt;头像表：2,480&lt;/li&gt;
+&lt;li&gt;表情收藏/商店相关表：已导出 schema 和 JSONL&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;结论&lt;span class="hx:absolute hx:-mt-20" id="结论"&gt;&lt;/span&gt;
+&lt;a href="#%e7%bb%93%e8%ae%ba" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;普通聊天消息已覆盖 &lt;code&gt;message_0.db&lt;/code&gt; 到 &lt;code&gt;message_7.db&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;公众号、服务号和业务消息已覆盖 &lt;code&gt;biz_message_0.db&lt;/code&gt; 到 &lt;code&gt;biz_message_4.db&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;大部分辅助 SQLite 数据已解密并导出。&lt;/li&gt;
+&lt;li&gt;仍缺 key 的 DB 是 &lt;code&gt;bizchat/bizchat.db&lt;/code&gt;、&lt;code&gt;solitaire/solitaire.db&lt;/code&gt;、&lt;code&gt;message/weclaw.db&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;本次没有复制 live &lt;code&gt;msg&lt;/code&gt; 媒体实体目录，因此不要把此快照理解为完整附件归档。&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title/><link>https://lothing.github.io/mounts/wechat-raw-data/docs/export-snapshot/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://lothing.github.io/mounts/wechat-raw-data/docs/export-snapshot/</guid><description>
+&lt;h1&gt;微信导出快照&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;快照日期：2026-06-01&lt;/li&gt;
+&lt;li&gt;微信账号目录：&lt;code&gt;luowei505050_6b7a&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;成功全量导出版本：WeChat 4.0.3 / bundle &lt;code&gt;29123&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;4.0.3 下载记录：&lt;a
+href="https://github.com/zsbai/wechat-versions/releases/tag/v4.0.3"target="_blank" rel="noopener"&gt;https://github.com/zsbai/wechat-versions/releases/tag/v4.0.3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;原始归档目录：&lt;code&gt;$HOME/projects/Others/wechat-raw-data&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;agent-harness 私有知识目录：&lt;code&gt;$HOME/.agents/knowledge/wechat&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;发布意图：本地私有归档，不准备公开发布。&lt;/li&gt;
+&lt;li&gt;HomeLab 原始沙盒备份：&lt;code&gt;luowei@lwds920.local:/volume1/data/MyBigData/Wechats/xwechat_files&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;源路径&lt;span class="hx:absolute hx:-mt-20" id="源路径"&gt;&lt;/span&gt;
+&lt;a href="#%e6%ba%90%e8%b7%af%e5%be%84" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;微信沙盒数据根目录：
+&lt;code&gt;$HOME/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;加密数据库目录：
+&lt;code&gt;$HOME/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/luowei505050_6b7a/db_storage&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;微信媒体目录：
+&lt;code&gt;$HOME/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/luowei505050_6b7a/msg&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;解密/导出仓库：
+&lt;code&gt;$HOME/projects/Others/wechat-raw-data/wechat-export-macos&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;LLDB key 捕获仓库：
+&lt;code&gt;$HOME/projects/Others/wechat-db-decrypt-macos&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;双向引用&lt;span class="hx:absolute hx:-mt-20" id="双向引用"&gt;&lt;/span&gt;
+&lt;a href="#%e5%8f%8c%e5%90%91%e5%bc%95%e7%94%a8" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;原始归档与导出工具：&lt;code&gt;$HOME/projects/Others/wechat-raw-data&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;agent-harness 微信知识层：&lt;code&gt;$HOME/.agents/knowledge/wechat&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;harness 中的 raw/normalized 大文件通过 &lt;code&gt;agent-harness-wechat-knowledge-20260602&lt;/code&gt; release assets 托管；clone harness 后用 &lt;code&gt;$HOME/.agents/knowledge/wechat/scripts/download-release-assets.sh&lt;/code&gt; 恢复。&lt;/li&gt;
+&lt;li&gt;HomeLab 主 NAS 原始沙盒备份：&lt;code&gt;luowei@lwds920.local:/volume1/data/MyBigData/Wechats/xwechat_files&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;HomeLab 原始沙盒备份&lt;span class="hx:absolute hx:-mt-20" id="homelab-原始沙盒备份"&gt;&lt;/span&gt;
+&lt;a href="#homelab-%e5%8e%9f%e5%a7%8b%e6%b2%99%e7%9b%92%e5%a4%87%e4%bb%bd" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;2026-06-02 将整个 macOS 微信 &lt;code&gt;xwechat_files&lt;/code&gt; 目录按 &lt;code&gt;20260601&lt;/code&gt; 批次备份到 lwds920：&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;rsync -aE --stats &lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;&lt;span class="s2"&gt;/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/&amp;#34;&lt;/span&gt; &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; luowei@lwds920.local:/volume1/data/MyBigData/Wechats/xwechat_files/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;rsync -aE --partial --append-verify --stats --human-readable &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;&lt;span class="s2"&gt;/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/&amp;#34;&lt;/span&gt; &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; luowei@lwds920.local:/volume1/data/MyBigData/Wechats/xwechat_files/&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;结果：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;rsync 总文件大小：&lt;code&gt;35,628,568,689 bytes&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;文件数：&lt;code&gt;148772&lt;/code&gt;，目录数：&lt;code&gt;9546&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;源目录 &lt;code&gt;du -sh&lt;/code&gt;：&lt;code&gt;31G&lt;/code&gt;；NAS 端 &lt;code&gt;du -sh&lt;/code&gt;：&lt;code&gt;34G&lt;/code&gt;，差异来自文件系统块大小和元数据计量。&lt;/li&gt;
+&lt;li&gt;关键账号目录：&lt;code&gt;luowei505050_6b7a/db_storage&lt;/code&gt; 约 &lt;code&gt;2.0G&lt;/code&gt;，&lt;code&gt;luowei505050_6b7a/msg&lt;/code&gt; 已备份到 NAS。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;xwechat_files/README.md&lt;/code&gt; 已写入源目录并同步到 NAS，用于后续增量备份和清理前复核。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;后续重复备份优先运行：&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;./scripts/backup-xwechat-files-to-lwds920.sh&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;成功路径摘要&lt;span class="hx:absolute hx:-mt-20" id="成功路径摘要"&gt;&lt;/span&gt;
+&lt;a href="#%e6%88%90%e5%8a%9f%e8%b7%af%e5%be%84%e6%91%98%e8%a6%81" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;将微信降级到 4.0.3。&lt;/li&gt;
+&lt;li&gt;对 &lt;code&gt;/Applications/WeChat.app&lt;/code&gt; 做 ad-hoc 重签。&lt;/li&gt;
+&lt;li&gt;保持 SIP disabled。&lt;/li&gt;
+&lt;li&gt;启动微信并登录。&lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;sudo ./find_all_keys_macos &amp;lt;WeChatPID&amp;gt;&lt;/code&gt; 抓取 26 个可用 DB key。&lt;/li&gt;
+&lt;li&gt;运行 &lt;code&gt;decrypt_db.py&lt;/code&gt; 解密 26 个 SQLite DB。&lt;/li&gt;
+&lt;li&gt;运行 &lt;code&gt;export_all_chats_jsonl.py&lt;/code&gt; 导出 1,280,859 条消息。&lt;/li&gt;
+&lt;li&gt;运行 &lt;code&gt;export_auxiliary_data.py&lt;/code&gt; 导出联系人、收藏、SNS、资源、FTS、媒体索引等辅助数据。&lt;/li&gt;
+&lt;li&gt;用 agent-harness normalizer 生成本地检索语料和 manifest。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;归档文件&lt;span class="hx:absolute hx:-mt-20" id="归档文件"&gt;&lt;/span&gt;
+&lt;a href="#%e5%bd%92%e6%a1%a3%e6%96%87%e4%bb%b6" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;decrypted/session/session.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;decrypted/message/message_0.db&lt;/code&gt; 到 &lt;code&gt;message_7.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;decrypted/message/biz_message_0.db&lt;/code&gt; 到 &lt;code&gt;biz_message_4.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;decrypted/contact/contact.db&lt;/code&gt;、&lt;code&gt;contact/contact_fts.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;decrypted/favorite/favorite.db&lt;/code&gt;、&lt;code&gt;favorite/favorite_fts.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;decrypted/message/message_resource.db&lt;/code&gt;、&lt;code&gt;message/message_fts.db&lt;/code&gt;、&lt;code&gt;message/media_0.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;decrypted/sns/sns.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;decrypted/hardlink/hardlink.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;decrypted/head_image/head_image.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;decrypted/emoticon/emoticon.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;decrypted/general/general.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;raw-exports/wechat-all-messages.full-2026-06-01.jsonl&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;normalized/messages.redacted.jsonl&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;aux-exports/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;private/all_keys.json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;private/wechat_keys.json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;private/wechat-export-config.json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;manifests/agent-normalize-manifest.json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tools/&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;覆盖范围&lt;span class="hx:absolute hx:-mt-20" id="覆盖范围"&gt;&lt;/span&gt;
+&lt;a href="#%e8%a6%86%e7%9b%96%e8%8c%83%e5%9b%b4" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;数据域&lt;/th&gt;
+&lt;th&gt;状态&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;普通聊天消息&lt;/td&gt;
+&lt;td&gt;已覆盖&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;message_0.db&lt;/code&gt; 到 &lt;code&gt;message_7.db&lt;/code&gt; 已解密导出。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;公众号/服务号/业务消息&lt;/td&gt;
+&lt;td&gt;已覆盖&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;biz_message_0.db&lt;/code&gt; 到 &lt;code&gt;biz_message_4.db&lt;/code&gt; 已解密导出。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;会话元数据&lt;/td&gt;
+&lt;td&gt;已覆盖&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;session/session.db&lt;/code&gt; 已解密。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;联系人&lt;/td&gt;
+&lt;td&gt;已覆盖&lt;/td&gt;
+&lt;td&gt;导出 21,830 条联系人、32 个标签、17,474 条群成员记录。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;收藏&lt;/td&gt;
+&lt;td&gt;已覆盖&lt;/td&gt;
+&lt;td&gt;导出 483 条收藏记录。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;消息资源/媒体索引&lt;/td&gt;
+&lt;td&gt;已覆盖&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;message_resource.db&lt;/code&gt;、&lt;code&gt;media_0.db&lt;/code&gt;、&lt;code&gt;hardlink.db&lt;/code&gt; 已导出。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;全文搜索索引&lt;/td&gt;
+&lt;td&gt;已覆盖&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;message/message_fts.db&lt;/code&gt; 已导出。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SNS/朋友圈类数据&lt;/td&gt;
+&lt;td&gt;已覆盖&lt;/td&gt;
+&lt;td&gt;导出 2,944 条 SNS timeline，通知表为 0。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;仍缺 key 的 DB&lt;/td&gt;
+&lt;td&gt;部分缺口&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bizchat/bizchat.db&lt;/code&gt;、&lt;code&gt;solitaire/solitaire.db&lt;/code&gt;、&lt;code&gt;message/weclaw.db&lt;/code&gt;。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;媒体实体文件&lt;/td&gt;
+&lt;td&gt;NAS 已备份&lt;/td&gt;
+&lt;td&gt;约 27GB 的 live &lt;code&gt;msg&lt;/code&gt; 目录未进入本仓库快照，但已随整个 &lt;code&gt;xwechat_files&lt;/code&gt; 目录备份到 lwds920。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;归一化语料&lt;span class="hx:absolute hx:-mt-20" id="归一化语料"&gt;&lt;/span&gt;
+&lt;a href="#%e5%bd%92%e4%b8%80%e5%8c%96%e8%af%ad%e6%96%99" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;消息行数：1,280,859&lt;/li&gt;
+&lt;li&gt;会话数：1,541&lt;/li&gt;
+&lt;li&gt;speaker 数：10,228&lt;/li&gt;
+&lt;li&gt;首条时间：&lt;code&gt;2019-07-08T08:50:17+00:00&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;末条时间：&lt;code&gt;2026-06-01T14:52:56+00:00&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;源 SHA-256：
+&lt;code&gt;0907d4a686cf1ca430d94edc29a06193843b8dc30d11a1cb55af6031f0458ed1&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;normalized/messages.redacted.jsonl&lt;/code&gt; 已做基础脱敏，但仍属于私有本地数据。&lt;/p&gt;</description></item><item><title/><link>https://lothing.github.io/mounts/wechat-raw-data/docs/replay-runbook/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://lothing.github.io/mounts/wechat-raw-data/docs/replay-runbook/</guid><description>
+&lt;h1&gt;微信导出复盘流程&lt;/h1&gt;&lt;p&gt;本文记录 2026-06-01 已验证成功的 macOS 微信导出路径。最终成功方案是：微信 4.0.3 + ad-hoc 重签 + SIP disabled + sudo C 内存扫描器。&lt;/p&gt;
+&lt;h2&gt;1. 版本检查点&lt;span class="hx:absolute hx:-mt-20" id="1-版本检查点"&gt;&lt;/span&gt;
+&lt;a href="#1-%e7%89%88%e6%9c%ac%e6%a3%80%e6%9f%a5%e7%82%b9" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;成功版本：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;WeChat 4.0.3&lt;/li&gt;
+&lt;li&gt;Bundle version &lt;code&gt;29123&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;历史版本下载记录：&lt;a
+href="https://github.com/zsbai/wechat-versions/releases/tag/v4.0.3"target="_blank" rel="noopener"&gt;https://github.com/zsbai/wechat-versions/releases/tag/v4.0.3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;检查命令：&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;/usr/libexec/PlistBuddy -c &lt;span class="s1"&gt;&amp;#39;Print :CFBundleShortVersionString&amp;#39;&lt;/span&gt; &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; -c &lt;span class="s1"&gt;&amp;#39;Print :CFBundleVersion&amp;#39;&lt;/span&gt; /Applications/WeChat.app/Contents/Info.plist
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;codesign -dv /Applications/WeChat.app
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;csrutil status&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;期望状态：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;CFBundleShortVersionString&lt;/code&gt; 为 &lt;code&gt;4.0.3&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;CFBundleVersion&lt;/code&gt; 为 &lt;code&gt;29123&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Signature=adhoc&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;SIP 为 disabled&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;2. 重签微信&lt;span class="hx:absolute hx:-mt-20" id="2-重签微信"&gt;&lt;/span&gt;
+&lt;a href="#2-%e9%87%8d%e7%ad%be%e5%be%ae%e4%bf%a1" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;退出微信后执行：&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo codesign --force --deep --sign - /Applications/WeChat.app&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;重签完成后启动微信并登录。&lt;/p&gt;
+&lt;h2&gt;3. 抓取 DB key&lt;span class="hx:absolute hx:-mt-20" id="3-抓取-db-key"&gt;&lt;/span&gt;
+&lt;a href="#3-%e6%8a%93%e5%8f%96-db-key" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;确认 WeChat PID：&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;pgrep -fl &lt;span class="s1"&gt;&amp;#39;WeChat|Weixin|微信&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;运行 4.0.3 成功路径：&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; &lt;span class="nv"&gt;$HOME&lt;/span&gt;/projects/Others/wechat-raw-data/wechat-export-macos
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo ./find_all_keys_macos &amp;lt;WeChatPID&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;本次成功结果：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;扫描约 5.4GB 进程内存。&lt;/li&gt;
+&lt;li&gt;找到 26 个唯一 key。&lt;/li&gt;
+&lt;li&gt;覆盖 &lt;code&gt;message_0..7&lt;/code&gt;、&lt;code&gt;biz_message_0..4&lt;/code&gt;、&lt;code&gt;session&lt;/code&gt;、&lt;code&gt;contact&lt;/code&gt;、&lt;code&gt;favorite&lt;/code&gt;、&lt;code&gt;message_resource&lt;/code&gt;、&lt;code&gt;media_0&lt;/code&gt;、&lt;code&gt;message_fts&lt;/code&gt;、&lt;code&gt;sns&lt;/code&gt;、&lt;code&gt;hardlink&lt;/code&gt;、&lt;code&gt;head_image&lt;/code&gt;、&lt;code&gt;emoticon&lt;/code&gt;、&lt;code&gt;general&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;4.1.x 阶段 LLDB 脚本可抓普通消息分片，但没有解决辅助库 key；4.0.3 是本次辅助库成功的关键。&lt;/p&gt;
+&lt;h2&gt;4. 解密数据库&lt;span class="hx:absolute hx:-mt-20" id="4-解密数据库"&gt;&lt;/span&gt;
+&lt;a href="#4-%e8%a7%a3%e5%af%86%e6%95%b0%e6%8d%ae%e5%ba%93" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; &lt;span class="nv"&gt;$HOME&lt;/span&gt;/projects/Others/wechat-raw-data/wechat-export-macos
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;.venv/bin/python decrypt_db.py&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;期望结果：26 个 DB 成功，3 个 DB 因无 key 跳过。&lt;/p&gt;
+&lt;p&gt;仍缺：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;bizchat/bizchat.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;solitaire/solitaire.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;message/weclaw.db&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;5. 导出完整聊天 JSONL&lt;span class="hx:absolute hx:-mt-20" id="5-导出完整聊天-jsonl"&gt;&lt;/span&gt;
+&lt;a href="#5-%e5%af%bc%e5%87%ba%e5%ae%8c%e6%95%b4%e8%81%8a%e5%a4%a9-jsonl" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; &lt;span class="nv"&gt;$HOME&lt;/span&gt;/projects/Others/wechat-raw-data/wechat-export-macos
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;.venv/bin/python export_all_chats_jsonl.py &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; --output &lt;span class="nv"&gt;$HOME&lt;/span&gt;/.agents/knowledge/wechat/raw/exports/wechat-all-messages.full-2026-06-01.jsonl&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;本次结果：1,280,859 条消息。&lt;/p&gt;
+&lt;h2&gt;6. 归一化为 agent-harness 本地语料&lt;span class="hx:absolute hx:-mt-20" id="6-归一化为-agent-harness-本地语料"&gt;&lt;/span&gt;
+&lt;a href="#6-%e5%bd%92%e4%b8%80%e5%8c%96%e4%b8%ba-agent-harness-%e6%9c%ac%e5%9c%b0%e8%af%ad%e6%96%99" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;python3 &lt;span class="nv"&gt;$HOME&lt;/span&gt;/.agents/tools/wechat-archive/wechat-archive-normalize.py &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; --input &lt;span class="nv"&gt;$HOME&lt;/span&gt;/.agents/knowledge/wechat/raw/exports/wechat-all-messages.full-2026-06-01.jsonl &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; --format jsonl &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; --output-root &lt;span class="nv"&gt;$HOME&lt;/span&gt;/.agents/knowledge/wechat&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;输出：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$HOME/.agents/knowledge/wechat/normalized/messages.redacted.jsonl&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$HOME/.agents/knowledge/wechat/private/manifest.json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$HOME/.agents/knowledge/wechat/wiki/wechat-archive-index.md&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;7. 导出辅助库&lt;span class="hx:absolute hx:-mt-20" id="7-导出辅助库"&gt;&lt;/span&gt;
+&lt;a href="#7-%e5%af%bc%e5%87%ba%e8%be%85%e5%8a%a9%e5%ba%93" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; &lt;span class="nv"&gt;$HOME&lt;/span&gt;/projects/Others/wechat-raw-data/wechat-export-macos
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;.venv/bin/python export_auxiliary_data.py &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; --output-dir &lt;span class="nv"&gt;$HOME&lt;/span&gt;/projects/Others/wechat-raw-data/aux-exports&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;主要输出：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;contacts.jsonl&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;contact_labels.jsonl&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;chatroom_members.jsonl&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;favorites.jsonl&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sns_timeline.jsonl&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sns_notifications.jsonl&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;message_resource__*.jsonl&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;generic/&lt;/code&gt; 下的 FTS、媒体索引、hardlink、头像、表情、biz_message 等通用表 dump&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;schemas/&lt;/code&gt; 下的 schema JSON&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;manifest.json&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;已知问题：&lt;code&gt;general/general.db&lt;/code&gt; 已解密，但其中一个二进制字段在 generic dump 阶段触发 UTF-8 解码错误；后续可以把 exporter 改成二进制字段 base64 输出。&lt;/p&gt;
+&lt;h2&gt;8. 同步到 raw archive&lt;span class="hx:absolute hx:-mt-20" id="8-同步到-raw-archive"&gt;&lt;/span&gt;
+&lt;a href="#8-%e5%90%8c%e6%ad%a5%e5%88%b0-raw-archive" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mkdir -p &lt;span class="nv"&gt;$HOME&lt;/span&gt;/projects/Others/wechat-raw-data/&lt;span class="o"&gt;{&lt;/span&gt;decrypted,raw-exports,normalized,private,tools,docs,manifests&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;rsync -a --delete &lt;span class="nv"&gt;$HOME&lt;/span&gt;/projects/Others/wechat-raw-data/wechat-export-macos/decrypted/ &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nv"&gt;$HOME&lt;/span&gt;/projects/Others/wechat-raw-data/decrypted/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;rsync -a &lt;span class="nv"&gt;$HOME&lt;/span&gt;/.agents/knowledge/wechat/raw/exports/wechat-all-messages.full-2026-06-01.jsonl &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nv"&gt;$HOME&lt;/span&gt;/projects/Others/wechat-raw-data/raw-exports/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;rsync -a &lt;span class="nv"&gt;$HOME&lt;/span&gt;/.agents/knowledge/wechat/normalized/messages.redacted.jsonl &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nv"&gt;$HOME&lt;/span&gt;/projects/Others/wechat-raw-data/normalized/&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;9. 下一次导入检查点&lt;span class="hx:absolute hx:-mt-20" id="9-下一次导入检查点"&gt;&lt;/span&gt;
+&lt;a href="#9-%e4%b8%8b%e4%b8%80%e6%ac%a1%e5%af%bc%e5%85%a5%e6%a3%80%e6%9f%a5%e7%82%b9" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;下一次追加新微信记录时，从以下位置开始：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;确认当前微信版本；如果 4.1.x 抓不到辅助库 key，回退到 4.0.3。&lt;/li&gt;
+&lt;li&gt;重新重签 WeChat.app。&lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;find_all_keys_macos&lt;/code&gt; 抓 key。&lt;/li&gt;
+&lt;li&gt;对比 &lt;code&gt;all_keys.json&lt;/code&gt; 中 key 数量和 DB 覆盖范围。&lt;/li&gt;
+&lt;li&gt;运行解密、聊天导出、辅助库导出和 normalizer。&lt;/li&gt;
+&lt;li&gt;更新 &lt;code&gt;docs/export-snapshot.md&lt;/code&gt;、&lt;code&gt;docs/analysis-summary.md&lt;/code&gt; 和 agent-harness 里的 snapshot 摘要。&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title/><link>https://lothing.github.io/mounts/wechat-raw-data/readme/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://lothing.github.io/mounts/wechat-raw-data/readme/</guid><description>
+&lt;h1&gt;微信原始数据归档&lt;/h1&gt;&lt;p&gt;这是 Luowei 在 2026-06-01 从 macOS 微信导出的本地私有归档。该目录保存原始导出、明文 SQLite、辅助库 JSONL、归一化语料、密钥和复盘文档，不面向公开发布。&lt;/p&gt;
+&lt;h2&gt;大文件托管说明&lt;span class="hx:absolute hx:-mt-20" id="大文件托管说明"&gt;&lt;/span&gt;
+&lt;a href="#%e5%a4%a7%e6%96%87%e4%bb%b6%e6%89%98%e7%ae%a1%e8%af%b4%e6%98%8e" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;GitHub 会拦截超过 100MB 的普通 git blob。本仓库中的大文件已改为 GitHub Release Asset 托管模式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Release tag：&lt;code&gt;wechat-raw-data-20260601&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;本地待上传 asset staging：
+&lt;code&gt;$HOME/projects/Others/wechat-raw-data-release-assets/wechat-raw-data-20260601&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;仓库内 manifest：&lt;code&gt;release-assets.json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;原大文件路径保留为 JSON 指针文件，记录 release 下载链接、大小和 SHA-256。&lt;/li&gt;
+&lt;li&gt;clone 后恢复大文件：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;gh auth login
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;./scripts/download-release-assets.sh&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;私有仓库推荐使用已登录的 &lt;code&gt;gh&lt;/code&gt; 下载；脚本也支持通过 &lt;code&gt;GH_TOKEN&lt;/code&gt; 或 &lt;code&gt;GITHUB_TOKEN&lt;/code&gt; 调用 &lt;code&gt;curl&lt;/code&gt;。如果 release 尚未创建或 assets 尚未上传，先修复 GitHub CLI 登录并上传 staging 目录中的文件。&lt;/p&gt;
+&lt;p&gt;用户已说明这个仓库不会推送到公共仓库，因此本地归档不做脱敏处理。&lt;code&gt;.gitignore&lt;/code&gt; 只是防止日常操作误提交大体积隐私文件，不表示本地数据必须删减或脱敏。&lt;/p&gt;
+&lt;h2&gt;与 agent-harness 的关系&lt;span class="hx:absolute hx:-mt-20" id="与-agent-harness-的关系"&gt;&lt;/span&gt;
+&lt;a href="#%e4%b8%8e-agent-harness-%e7%9a%84%e5%85%b3%e7%b3%bb" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;本仓库是微信原始归档与导出工具源：明文 DB、辅助库 JSONL、key/config/log、release asset 指针和恢复脚本都在这里维护。&lt;/li&gt;
+&lt;li&gt;agent-harness 的微信知识入口在 &lt;code&gt;$HOME/.agents/knowledge/wechat&lt;/code&gt;，用于 agent 本地检索、wiki 摘要和使用规则。&lt;/li&gt;
+&lt;li&gt;agent-harness 不直接提交微信 raw/normalized 大文件；这些大文件通过私有 release &lt;code&gt;agent-harness-wechat-knowledge-20260602&lt;/code&gt; 托管，并由 &lt;code&gt;$HOME/.agents/knowledge/wechat/scripts/download-release-assets.sh&lt;/code&gt; 恢复。&lt;/li&gt;
+&lt;li&gt;当 agent 只加载本仓库时，应知道可去 &lt;code&gt;$HOME/.agents/knowledge/wechat&lt;/code&gt; 读取 reviewed wiki 和本机 normalized 检索语料；当 agent 只加载 harness 时，应知道本仓库是可回溯的原始数据和导出工具来源。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;目录结构&lt;span class="hx:absolute hx:-mt-20" id="目录结构"&gt;&lt;/span&gt;
+&lt;a href="#%e7%9b%ae%e5%bd%95%e7%bb%93%e6%9e%84" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;decrypted/&lt;/code&gt;：&lt;code&gt;decrypt_db.py&lt;/code&gt; 生成的明文 SQLite 数据库。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;raw-exports/&lt;/code&gt;：从明文消息分片导出的完整 JSONL。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;normalized/&lt;/code&gt;：agent-harness 本地检索使用的脱敏 JSONL。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;aux-exports/&lt;/code&gt;：联系人、收藏、SNS、FTS、媒体索引等辅助库 JSONL 和 schema。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;private/&lt;/code&gt;：key、config 等仅本机使用的私有文件。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tools/&lt;/code&gt;：本次导出使用或复制留存的脚本。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;wechat-export-macos/&lt;/code&gt;：原独立导出工具仓库的源码/文档/key 捕获记录快照，保留 &lt;code&gt;all_keys.json&lt;/code&gt;、&lt;code&gt;config.json&lt;/code&gt;、&lt;code&gt;scan_logs/&lt;/code&gt;，后续删除外部仓库后从这里继续维护。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;manifests/&lt;/code&gt;：归一化 manifest 等处理元数据。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docs/&lt;/code&gt;：本次导出快照、复盘和分析说明。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;release-assets.json&lt;/code&gt;：大文件 release asset manifest。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;scripts/download-release-assets.sh&lt;/code&gt;：clone 后一键下载并恢复大文件。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;当前快照&lt;span class="hx:absolute hx:-mt-20" id="当前快照"&gt;&lt;/span&gt;
+&lt;a href="#%e5%bd%93%e5%89%8d%e5%bf%ab%e7%85%a7" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;微信版本：成功全量导出使用 WeChat 4.0.3，bundle &lt;code&gt;29123&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;历史版本来源：&lt;a
+href="https://github.com/zsbai/wechat-versions/releases/tag/v4.0.3"target="_blank" rel="noopener"&gt;https://github.com/zsbai/wechat-versions/releases/tag/v4.0.3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;账号目录：&lt;code&gt;luowei505050_6b7a&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;加密 DB 源：
+&lt;code&gt;$HOME/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/luowei505050_6b7a/db_storage&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;媒体源：
+&lt;code&gt;$HOME/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/luowei505050_6b7a/msg&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;HomeLab 原始沙盒备份&lt;span class="hx:absolute hx:-mt-20" id="homelab-原始沙盒备份"&gt;&lt;/span&gt;
+&lt;a href="#homelab-%e5%8e%9f%e5%a7%8b%e6%b2%99%e7%9b%92%e5%a4%87%e4%bb%bd" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;备份批次：&lt;code&gt;20260601&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;迁移记录日期：&lt;code&gt;2026-06-02&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;本机源目录：&lt;code&gt;$HOME/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;NAS 目标目录：&lt;code&gt;luowei@lwds920.local:/volume1/data/MyBigData/Wechats/xwechat_files&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;范围：整个 &lt;code&gt;xwechat_files&lt;/code&gt; 目录，包含 &lt;code&gt;all_users&lt;/code&gt;、&lt;code&gt;WMPF&lt;/code&gt;、&lt;code&gt;Backup&lt;/code&gt;、&lt;code&gt;old_backup&lt;/code&gt;、&lt;code&gt;luowei505050_6b7a&lt;/code&gt;、&lt;code&gt;wxid_utd61htzonqs22_49aa&lt;/code&gt; 等。&lt;/li&gt;
+&lt;li&gt;校验：&lt;code&gt;rsync&lt;/code&gt; 全量同步后追加一次增量补齐同步，最终源/目标文件数 &lt;code&gt;148772&lt;/code&gt;、目录数 &lt;code&gt;9546&lt;/code&gt; 一致；rsync 统计总文件大小 &lt;code&gt;35.63G&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;说明文件：源目录与 NAS 目标目录中均有 &lt;code&gt;README.md&lt;/code&gt;，记录本次迁移目的、账号目录和后续增量备份建议。&lt;/li&gt;
+&lt;li&gt;后续增量备份脚本：&lt;code&gt;scripts/backup-xwechat-files-to-lwds920.sh&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;覆盖情况&lt;span class="hx:absolute hx:-mt-20" id="覆盖情况"&gt;&lt;/span&gt;
+&lt;a href="#%e8%a6%86%e7%9b%96%e6%83%85%e5%86%b5" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;消息总数：1,280,859。&lt;/li&gt;
+&lt;li&gt;会话数：1,541。&lt;/li&gt;
+&lt;li&gt;speaker 数：10,228。&lt;/li&gt;
+&lt;li&gt;时间范围：2019-07-08 到 2026-06-01。&lt;/li&gt;
+&lt;li&gt;普通消息分片：&lt;code&gt;message_0.db&lt;/code&gt; 到 &lt;code&gt;message_7.db&lt;/code&gt; 已解密并导出。&lt;/li&gt;
+&lt;li&gt;公众号/服务号/业务消息分片：&lt;code&gt;biz_message_0.db&lt;/code&gt; 到 &lt;code&gt;biz_message_4.db&lt;/code&gt; 已解密并导出。&lt;/li&gt;
+&lt;li&gt;辅助库：联系人、联系人 FTS、收藏、收藏 FTS、消息资源、消息 FTS、语音/媒体索引、SNS、hardlink 媒体索引、头像、表情、general 元数据已解密。&lt;/li&gt;
+&lt;li&gt;仍缺 key：&lt;code&gt;bizchat/bizchat.db&lt;/code&gt;、&lt;code&gt;solitaire/solitaire.db&lt;/code&gt;、&lt;code&gt;message/weclaw.db&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;general/general.db&lt;/code&gt; 已解密，但通用 JSONL 导出时 &lt;code&gt;fmessage_detail_buf_&lt;/code&gt; 这类二进制字段触发了一处文本解码错误。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;关键产物&lt;span class="hx:absolute hx:-mt-20" id="关键产物"&gt;&lt;/span&gt;
+&lt;a href="#%e5%85%b3%e9%94%ae%e4%ba%a7%e7%89%a9" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;完整消息 JSONL：
+&lt;code&gt;raw-exports/wechat-all-messages.full-2026-06-01.jsonl&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;本地 agent 检索语料：
+&lt;code&gt;normalized/messages.redacted.jsonl&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;辅助库导出 manifest：
+&lt;code&gt;aux-exports/manifest.json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;agent-harness 归一化 manifest：
+&lt;code&gt;manifests/agent-normalize-manifest.json&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;复盘入口&lt;span class="hx:absolute hx:-mt-20" id="复盘入口"&gt;&lt;/span&gt;
+&lt;a href="#%e5%a4%8d%e7%9b%98%e5%85%a5%e5%8f%a3" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;docs/export-snapshot.md&lt;/code&gt;：快照覆盖范围和源路径。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docs/analysis-summary.md&lt;/code&gt;：消息、分片、年份、类型和辅助库统计。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docs/replay-runbook.md&lt;/code&gt;：下一次复现导出的命令流程。&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title/><link>https://lothing.github.io/mounts/wechat-raw-data/wechat-export-macos/local_export_notes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://lothing.github.io/mounts/wechat-raw-data/wechat-export-macos/local_export_notes/</guid><description>
+&lt;h1&gt;本机微信导出记录&lt;/h1&gt;&lt;h2&gt;当前成功状态&lt;span class="hx:absolute hx:-mt-20" id="当前成功状态"&gt;&lt;/span&gt;
+&lt;a href="#%e5%bd%93%e5%89%8d%e6%88%90%e5%8a%9f%e7%8a%b6%e6%80%81" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;成功导出日期：2026-06-01&lt;/li&gt;
+&lt;li&gt;成功微信版本：WeChat 4.0.3 / bundle &lt;code&gt;29123&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;历史版本下载记录：&lt;a
+href="https://github.com/zsbai/wechat-versions/releases/tag/v4.0.3"target="_blank" rel="noopener"&gt;https://github.com/zsbai/wechat-versions/releases/tag/v4.0.3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;活跃账号 DB：
+&lt;code&gt;$HOME/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/luowei505050_6b7a/db_storage&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;活跃账号媒体目录：
+&lt;code&gt;$HOME/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/luowei505050_6b7a/msg&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;config.json&lt;/code&gt; 已随工具快照保留，并与 &lt;code&gt;$HOME/projects/Others/wechat-raw-data/private/wechat-export-config.json&lt;/code&gt; 对应。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;all_keys.json&lt;/code&gt; 与 &lt;code&gt;scan_logs/&lt;/code&gt; 已随工具快照保留，删除原独立仓库前不要再手动清理。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.venv&lt;/code&gt; 不随工具归档提交；下一次运行前在本目录重新创建并安装 &lt;code&gt;pycryptodome&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;成功 key 捕获方式&lt;span class="hx:absolute hx:-mt-20" id="成功-key-捕获方式"&gt;&lt;/span&gt;
+&lt;a href="#%e6%88%90%e5%8a%9f-key-%e6%8d%95%e8%8e%b7%e6%96%b9%e5%bc%8f" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;4.1.x 阶段普通消息分片可通过 LLDB 断点脚本抓到，但辅助库 key 没有暴露。降级到 4.0.3 后，C 扫描器成功抓到 26 个 key：&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; &lt;span class="nv"&gt;$HOME&lt;/span&gt;/projects/Others/wechat-raw-data/wechat-export-macos
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;pgrep -fl &lt;span class="s1"&gt;&amp;#39;WeChat|Weixin|微信&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo ./find_all_keys_macos &amp;lt;WeChatPID&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;前置条件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SIP disabled。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/Applications/WeChat.app&lt;/code&gt; 已 ad-hoc 重签。&lt;/li&gt;
+&lt;li&gt;微信已启动并登录。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;成功覆盖&lt;span class="hx:absolute hx:-mt-20" id="成功覆盖"&gt;&lt;/span&gt;
+&lt;a href="#%e6%88%90%e5%8a%9f%e8%a6%86%e7%9b%96" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;普通消息：&lt;code&gt;message_0.db&lt;/code&gt; 到 &lt;code&gt;message_7.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;公众号/服务号/业务消息：&lt;code&gt;biz_message_0.db&lt;/code&gt; 到 &lt;code&gt;biz_message_4.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;会话：&lt;code&gt;session/session.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;联系人：&lt;code&gt;contact/contact.db&lt;/code&gt;、&lt;code&gt;contact/contact_fts.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;收藏：&lt;code&gt;favorite/favorite.db&lt;/code&gt;、&lt;code&gt;favorite/favorite_fts.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;资源和搜索：&lt;code&gt;message_resource.db&lt;/code&gt;、&lt;code&gt;message_fts.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;媒体索引：&lt;code&gt;media_0.db&lt;/code&gt;、&lt;code&gt;hardlink.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;SNS：&lt;code&gt;sns/sns.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;头像、表情、通用元数据：&lt;code&gt;head_image.db&lt;/code&gt;、&lt;code&gt;emoticon.db&lt;/code&gt;、&lt;code&gt;general.db&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;仍缺：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;bizchat/bizchat.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;solitaire/solitaire.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;message/weclaw.db&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;本次输出&lt;span class="hx:absolute hx:-mt-20" id="本次输出"&gt;&lt;/span&gt;
+&lt;a href="#%e6%9c%ac%e6%ac%a1%e8%be%93%e5%87%ba" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; &lt;span class="nv"&gt;$HOME&lt;/span&gt;/projects/Others/wechat-raw-data/wechat-export-macos
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;python3 -m venv .venv
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;.venv/bin/python -m pip install pycryptodome
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# config.json 与 all_keys.json 已在本目录保留；如需更新再重新抓 key&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;.venv/bin/python decrypt_db.py
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;.venv/bin/python export_all_chats_jsonl.py &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; --output &lt;span class="nv"&gt;$HOME&lt;/span&gt;/.agents/knowledge/wechat/raw/exports/wechat-all-messages.full-2026-06-01.jsonl
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;.venv/bin/python export_auxiliary_data.py &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; --output-dir &lt;span class="nv"&gt;$HOME&lt;/span&gt;/projects/Others/wechat-raw-data/aux-exports&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;结果：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;解密 DB：26 个。&lt;/li&gt;
+&lt;li&gt;全量消息 JSONL：1,280,859 条。&lt;/li&gt;
+&lt;li&gt;归一化后 agent-harness 本地语料：1,280,859 条，1,541 个会话，10,228 个 speaker。&lt;/li&gt;
+&lt;li&gt;辅助库导出：联系人、收藏、SNS、资源、FTS、语音/媒体索引、hardlink、头像、表情、schema/generic dump。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;下一次从哪里开始&lt;span class="hx:absolute hx:-mt-20" id="下一次从哪里开始"&gt;&lt;/span&gt;
+&lt;a href="#%e4%b8%8b%e4%b8%80%e6%ac%a1%e4%bb%8e%e5%93%aa%e9%87%8c%e5%bc%80%e5%a7%8b" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;如果当前微信版本不是 4.0.3，先判断是否需要回退；辅助库导出优先使用 4.0.3。&lt;/li&gt;
+&lt;li&gt;重签 WeChat.app。&lt;/li&gt;
+&lt;li&gt;启动微信，确认 PID。&lt;/li&gt;
+&lt;li&gt;运行 &lt;code&gt;sudo ./find_all_keys_macos &amp;lt;WeChatPID&amp;gt;&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;确认 &lt;code&gt;all_keys.json&lt;/code&gt; 约 26 个 key。&lt;/li&gt;
+&lt;li&gt;解密 DB、导出聊天 JSONL、导出辅助库。&lt;/li&gt;
+&lt;li&gt;用 agent-harness normalizer 更新本地 WeChat knowledge。&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title/><link>https://lothing.github.io/mounts/wechat-raw-data/wechat-export-macos/readme/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://lothing.github.io/mounts/wechat-raw-data/wechat-export-macos/readme/</guid><description>
+&lt;h1&gt;wechat-export-macos&lt;/h1&gt;&lt;p&gt;macOS 微信聊天记录一键解密导出工具。从运行中的微信进程提取数据库密钥，解密本地 SQLite 数据库，导出为可读的 TXT / CSV / JSON 格式。&lt;/p&gt;
+&lt;p&gt;支持 &lt;strong&gt;WeChat 4.x&lt;/strong&gt;（新版微信），适用于 &lt;strong&gt;macOS (Apple Silicon &amp;amp; Intel)&lt;/strong&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本目录是原独立 &lt;code&gt;wechat-export-macos&lt;/code&gt; 仓库迁入 &lt;code&gt;wechat-raw-data&lt;/code&gt; 后的工具快照。这里保留源码、文档、可复用脚本，以及本次成功导出的 &lt;code&gt;all_keys.json&lt;/code&gt;、&lt;code&gt;config.json&lt;/code&gt; 和 &lt;code&gt;scan_logs/&lt;/code&gt;；不保留 &lt;code&gt;.venv&lt;/code&gt;、&lt;code&gt;decrypted/&lt;/code&gt;、编译产物或其他可再生运行产物。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Luowei 2026-06-01 的完整导出实践中，普通消息分片在 4.1.x 可通过 LLDB 路线抓取 key；联系人、收藏、SNS、FTS、媒体索引、&lt;code&gt;biz_message_1..4&lt;/code&gt; 等辅助库最终是在 &lt;strong&gt;WeChat 4.0.3&lt;/strong&gt; 下用 C 扫描器成功抓取。4.0.3 历史版本下载记录：
+&lt;a
+href="https://github.com/zsbai/wechat-versions/releases/tag/v4.0.3"target="_blank" rel="noopener"&gt;https://github.com/zsbai/wechat-versions/releases/tag/v4.0.3&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;原理&lt;span class="hx:absolute hx:-mt-20" id="原理"&gt;&lt;/span&gt;
+&lt;a href="#%e5%8e%9f%e7%90%86" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;微信进程内存 ──提取密钥──▶ all_keys.json ──解密──▶ 明文 SQLite ──导出──▶ TXT/CSV/JSON
+(WCDB/SQLCipher 4) (AES-256-CBC) (.db files) (chat history)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;微信使用 &lt;a
+href="https://github.com/nicklockwood/wcdb"target="_blank" rel="noopener"&gt;WCDB&lt;/a&gt;（基于 SQLCipher 4）加密本地数据库。每个 &lt;code&gt;.db&lt;/code&gt; 文件有独立的 AES-256 密钥，缓存在进程内存中，格式为 &lt;code&gt;x'&amp;lt;64hex_key&amp;gt;&amp;lt;32hex_salt&amp;gt;'&lt;/code&gt;。本工具通过 Mach VM API 扫描微信进程内存，匹配密钥模式并验证正确性，然后逐页解密数据库。&lt;/p&gt;
+&lt;h2&gt;快速开始&lt;span class="hx:absolute hx:-mt-20" id="快速开始"&gt;&lt;/span&gt;
+&lt;a href="#%e5%bf%ab%e9%80%9f%e5%bc%80%e5%a7%8b" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;前置条件&lt;span class="hx:absolute hx:-mt-20" id="前置条件"&gt;&lt;/span&gt;
+&lt;a href="#%e5%89%8d%e7%bd%ae%e6%9d%a1%e4%bb%b6" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;macOS 11+&lt;/li&gt;
+&lt;li&gt;微信桌面版 4.x（已登录，聊天记录已同步）&lt;/li&gt;
+&lt;li&gt;Python 3.8+&lt;/li&gt;
+&lt;li&gt;Xcode Command Line Tools：&lt;code&gt;xcode-select --install&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;第一步：重签微信（去掉 Hardened Runtime）&lt;span class="hx:absolute hx:-mt-20" id="第一步重签微信去掉-hardened-runtime"&gt;&lt;/span&gt;
+&lt;a href="#%e7%ac%ac%e4%b8%80%e6%ad%a5%e9%87%8d%e7%ad%be%e5%be%ae%e4%bf%a1%e5%8e%bb%e6%8e%89-hardened-runtime" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 先退出微信，然后执行：&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo codesign --force --deep --sign - /Applications/WeChat.app
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 重新打开微信并登录&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;为什么需要重签？&lt;/strong&gt; macOS 微信默认带有 Hardened Runtime，阻止其他进程通过 &lt;code&gt;task_for_pid&lt;/code&gt; 读取其内存。重签为 ad-hoc 签名后移除了这个限制。微信更新后需要重新执行此步骤。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;替代方案：&lt;/strong&gt; 关闭 SIP（&lt;code&gt;csrutil disable&lt;/code&gt;），则无需重签，但影响范围更大。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;第二步：编译密钥扫描器&lt;span class="hx:absolute hx:-mt-20" id="第二步编译密钥扫描器"&gt;&lt;/span&gt;
+&lt;a href="#%e7%ac%ac%e4%ba%8c%e6%ad%a5%e7%bc%96%e8%af%91%e5%af%86%e9%92%a5%e6%89%ab%e6%8f%8f%e5%99%a8" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cc -O2 -o find_all_keys_macos find_all_keys_macos.c -framework Foundation&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;第三步：提取密钥&lt;span class="hx:absolute hx:-mt-20" id="第三步提取密钥"&gt;&lt;/span&gt;
+&lt;a href="#%e7%ac%ac%e4%b8%89%e6%ad%a5%e6%8f%90%e5%8f%96%e5%af%86%e9%92%a5" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 确保微信正在运行且已登录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;pgrep -fl &lt;span class="s1"&gt;&amp;#39;WeChat|Weixin|微信&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo ./find_all_keys_macos &amp;lt;WeChatPID&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;输出 &lt;code&gt;all_keys.json&lt;/code&gt;，包含所有数据库的解密密钥。&lt;/p&gt;
+&lt;p&gt;本机已验证成功的 4.0.3 结果是 26 个 key，覆盖：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;session/session.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;message/message_0.db&lt;/code&gt; 到 &lt;code&gt;message/message_7.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;message/biz_message_0.db&lt;/code&gt; 到 &lt;code&gt;message/biz_message_4.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;contact/contact.db&lt;/code&gt;、&lt;code&gt;contact/contact_fts.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;favorite/favorite.db&lt;/code&gt;、&lt;code&gt;favorite/favorite_fts.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;message/message_resource.db&lt;/code&gt;、&lt;code&gt;message/message_fts.db&lt;/code&gt;、&lt;code&gt;message/media_0.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sns/sns.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;hardlink/hardlink.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;head_image/head_image.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;emoticon/emoticon.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;general/general.db&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;仍未抓到 key 的低优先级 DB：&lt;code&gt;bizchat/bizchat.db&lt;/code&gt;、&lt;code&gt;solitaire/solitaire.db&lt;/code&gt;、&lt;code&gt;message/weclaw.db&lt;/code&gt;。&lt;/p&gt;
+&lt;h3&gt;第四步：安装 Python 依赖 &amp;amp; 解密&lt;span class="hx:absolute hx:-mt-20" id="第四步安装-python-依赖--解密"&gt;&lt;/span&gt;
+&lt;a href="#%e7%ac%ac%e5%9b%9b%e6%ad%a5%e5%ae%89%e8%a3%85-python-%e4%be%9d%e8%b5%96--%e8%a7%a3%e5%af%86" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;python3 -m venv .venv
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;.venv/bin/python -m pip install pycryptodome
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# config.json 与 all_keys.json 已在本目录保留；如需更新再重新抓 key&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;.venv/bin/python decrypt_db.py&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;解密后的数据库在 &lt;code&gt;./decrypted/&lt;/code&gt; 目录下。&lt;/p&gt;
+&lt;h3&gt;第五步：导出聊天记录&lt;span class="hx:absolute hx:-mt-20" id="第五步导出聊天记录"&gt;&lt;/span&gt;
+&lt;a href="#%e7%ac%ac%e4%ba%94%e6%ad%a5%e5%af%bc%e5%87%ba%e8%81%8a%e5%a4%a9%e8%ae%b0%e5%bd%95" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 列出所有会话（按消息数排序）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;python3 export_chat.py --list
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 导出某个联系人的聊天记录（模糊搜索昵称/备注）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;python3 export_chat.py --name &lt;span class="s2"&gt;&amp;#34;张三&amp;#34;&lt;/span&gt; --output ~/Downloads/张三
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 直接指定用户名导出&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;python3 export_chat.py --username wxid_xxxxx --output ~/Downloads/output
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 指定自己的 wxid（可选，通常自动检测）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;python3 export_chat.py --name &lt;span class="s2"&gt;&amp;#34;张三&amp;#34;&lt;/span&gt; --my-wxid wxid_xxxxx --output ~/Downloads/张三&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;导出文件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;chat.txt&lt;/code&gt; — 纯文本，可直接阅读&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;chat.csv&lt;/code&gt; — 表格格式，可用 Excel/Numbers 打开&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;chat.json&lt;/code&gt; — 结构化 JSON，适合编程分析&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;第六步：导出全量消息 JSONL&lt;span class="hx:absolute hx:-mt-20" id="第六步导出全量消息-jsonl"&gt;&lt;/span&gt;
+&lt;a href="#%e7%ac%ac%e5%85%ad%e6%ad%a5%e5%af%bc%e5%87%ba%e5%85%a8%e9%87%8f%e6%b6%88%e6%81%af-jsonl" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;用于 agent-harness 或本地分析时，可以一次性导出所有已解密消息分片：&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;python3 export_all_chats_jsonl.py &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; --output ~/.agents/knowledge/wechat/raw/exports/wechat-all-messages.full-2026-06-01.jsonl&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Luowei 2026-06-01 的完整结果：1,280,859 条消息，覆盖普通消息和 &lt;code&gt;biz_message_0..4&lt;/code&gt;。&lt;/p&gt;
+&lt;h3&gt;第七步：导出辅助库&lt;span class="hx:absolute hx:-mt-20" id="第七步导出辅助库"&gt;&lt;/span&gt;
+&lt;a href="#%e7%ac%ac%e4%b8%83%e6%ad%a5%e5%af%bc%e5%87%ba%e8%be%85%e5%8a%a9%e5%ba%93" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;在已解密辅助 DB 后运行：&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;python3 export_auxiliary_data.py &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; --output-dir &lt;span class="nv"&gt;$HOME&lt;/span&gt;/projects/Others/wechat-raw-data/aux-exports&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;输出包括联系人、标签、群成员、收藏、SNS timeline、消息资源、语音/媒体索引、FTS、hardlink、头像、表情以及 schema/generic JSONL。&lt;/p&gt;
+&lt;h2&gt;聊天记录迁移提示&lt;span class="hx:absolute hx:-mt-20" id="聊天记录迁移提示"&gt;&lt;/span&gt;
+&lt;a href="#%e8%81%8a%e5%a4%a9%e8%ae%b0%e5%bd%95%e8%bf%81%e7%a7%bb%e6%8f%90%e7%a4%ba" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Mac 微信默认只保留在 Mac 上收发的消息。如果需要手机上的历史记录：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;手机微信&lt;/strong&gt; → 设置 → 通用 → 聊天记录迁移与备份 → &lt;strong&gt;迁移到电脑&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;选择要迁移的聊天和时间范围&lt;/li&gt;
+&lt;li&gt;Mac 微信扫码接收&lt;/li&gt;
+&lt;li&gt;迁移完成后重新执行第三步（提取密钥）和第四步（解密）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;文件说明&lt;span class="hx:absolute hx:-mt-20" id="文件说明"&gt;&lt;/span&gt;
+&lt;a href="#%e6%96%87%e4%bb%b6%e8%af%b4%e6%98%8e" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;文件&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;find_all_keys_macos.c&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;C 语言密钥扫描器，通过 Mach VM API 读取微信进程内存&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;decrypt_db.py&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;数据库解密器，逐页解密 SQLCipher 4 加密的数据库&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;export_chat.py&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;聊天记录导出工具，支持按联系人导出为 TXT/CSV/JSON&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;export_all_chats_jsonl.py&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;全量消息分片 JSONL 导出工具，供 agent-harness normalizer 使用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;export_auxiliary_data.py&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;已解密辅助库导出工具，输出 JSONL、schema 和 manifest&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;config.py&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;配置加载器，自动检测微信数据目录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;key_utils.py&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;密钥工具函数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;数据库结构&lt;span class="hx:absolute hx:-mt-20" id="数据库结构"&gt;&lt;/span&gt;
+&lt;a href="#%e6%95%b0%e6%8d%ae%e5%ba%93%e7%bb%93%e6%9e%84" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;解密后的数据库位于 &lt;code&gt;./decrypted/&lt;/code&gt;：&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;decrypted/
+├── contact/contact.db # 联系人（昵称、备注、头像URL等）
+├── session/session.db # 会话列表
+├── message/message_0.db # 聊天记录（按时间分片）
+├── message/message_1.db
+├── message/message_2.db
+├── message/message_fts.db # 全文搜索索引
+├── message/media_0.db # 语音消息
+├── sns/sns.db # 朋友圈
+├── favorite/favorite.db # 收藏
+├── emoticon/emoticon.db # 表情包
+└── ...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;每个联系人/群的消息存在以 &lt;code&gt;Msg_&amp;lt;md5(username)&amp;gt;&lt;/code&gt; 命名的表中。&lt;/p&gt;
+&lt;h2&gt;常见问题&lt;span class="hx:absolute hx:-mt-20" id="常见问题"&gt;&lt;/span&gt;
+&lt;a href="#%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Q: &lt;code&gt;task_for_pid failed&lt;/code&gt; 怎么办？&lt;/strong&gt;
+确保：(1) 用 &lt;code&gt;sudo&lt;/code&gt; 运行；(2) 微信已重签（见第一步）；(3) 微信正在运行。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Q: 微信更新后还能用吗？&lt;/strong&gt;
+微信更新会恢复原始签名，重新执行第一步（重签）即可。如果 4.1.x 抓不到辅助库 key，可回退到已验证的 4.0.3 再导出。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Q: 导出的消息中为什么有 &lt;code&gt;[压缩内容]&lt;/code&gt;？&lt;/strong&gt;
+微信 WCDB 对部分消息内容使用了 zstd 压缩（&lt;code&gt;WCDB_CT_message_content=4&lt;/code&gt;），需要额外解压。大部分文本消息不受影响。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Q: 图片/视频/语音怎么导出？&lt;/strong&gt;
+&lt;code&gt;message_resource.db&lt;/code&gt;、&lt;code&gt;media_0.db&lt;/code&gt; 和 &lt;code&gt;hardlink.db&lt;/code&gt; 已能导出资源/语音/媒体索引。真正的图片、视频、文件实体仍在微信 &lt;code&gt;msg&lt;/code&gt; 媒体目录下，需要另行复制并按索引关联。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Q: &lt;code&gt;general/general.db&lt;/code&gt; 导出报 UTF-8 解码错误怎么办？&lt;/strong&gt;
+数据库已解密成功；当前只是 generic JSONL dump 对二进制字段不够友好。后续应把二进制字段改成 base64 输出。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Q: 支持群聊吗？&lt;/strong&gt;
+支持。群聊的表名是 &lt;code&gt;Msg_&amp;lt;md5(chatroom_id)&amp;gt;&lt;/code&gt;，导出方式相同。群聊中会显示每个发言者的 wxid（后续可关联到昵称）。&lt;/p&gt;
+&lt;h2&gt;致谢&lt;span class="hx:absolute hx:-mt-20" id="致谢"&gt;&lt;/span&gt;
+&lt;a href="#%e8%87%b4%e8%b0%a2" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a
+href="https://github.com/L1en2407/wechat-decrypt"target="_blank" rel="noopener"&gt;L1en2407/wechat-decrypt&lt;/a&gt; — C 语言内存扫描器&lt;/li&gt;
+&lt;li&gt;&lt;a
+href="https://github.com/Thearas/wechat-db-decrypt-macos"target="_blank" rel="noopener"&gt;Thearas/wechat-db-decrypt-macos&lt;/a&gt; — macOS lldb 密钥提取方案&lt;/li&gt;
+&lt;li&gt;&lt;a
+href="https://github.com/ylytdeng/wechat-decrypt"target="_blank" rel="noopener"&gt;ylytdeng/wechat-decrypt&lt;/a&gt; — 原始内存搜索方案&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;License&lt;span class="hx:absolute hx:-mt-20" id="license"&gt;&lt;/span&gt;
+&lt;a href="#license" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;WTFPL - Do What The Fuck You Want To Public License.&lt;/p&gt;</description></item></channel></rss>
